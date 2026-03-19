@@ -1,0 +1,6 @@
+langchain==1.2.12
+langchain-community==0.4.1
+langchain-ollama==1.0.1
+langchain-huggingface==1.2.1
+duckduckgo_search==8.1.1
+ddgs==9.11.4
