@@ -208,6 +208,56 @@ OPENWEATHER_API_KEY=your_api_key_here
 > **Note:** Newly created API keys may take up to a few hours to activate.
  
 ---
+## Setting Up Ollama & Llama 3.1
+ 
+BlueClaw uses [Ollama](https://ollama.com) to run the Llama 3.1 language model locally.
+ 
+### 1. Download and Install Ollama
+ 
+Go to [https://ollama.com/download](https://ollama.com/download) and download the installer for your OS:
+ 
+| OS | Instructions |
+|----|-------------|
+| macOS | Download the `.dmg`, open it, and drag Ollama to your Applications folder |
+| Windows | Download and run the `.exe` installer |
+| Linux | Run the install script in your terminal: |
+ 
+```bash
+# Linux only
+curl -fsSL https://ollama.com/install.sh | sh
+```
+ 
+Verify the installation:
+ 
+```bash
+ollama --version
+```
+ 
+### 2. Pull the Llama 3.1 Model
+ 
+Once Ollama is installed, download the Llama 3.1 model:
+ 
+```bash
+ollama pull llama3.1
+```
+ 
+> This will download several gigabytes of model weights. Make sure you have a stable internet connection and enough disk space (~5 GB).
+ 
+### 3. Verify the Model is Available
+ 
+```bash
+ollama list
+```
+ 
+You should see `llama3.1` listed. Ollama must be running in the background before you start the BlueClaw server.
+ 
+### 4. Start Ollama (if not already running)
+ 
+```bash
+ollama serve
+```
+ 
+---
 
 ## Running the App
 
