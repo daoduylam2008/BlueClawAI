@@ -140,11 +140,11 @@ Move `blueclaw.py` to a directory on your PATH and make it executable so you can
 # Create bn directory in the user path
 mkdir ~/bin
 
-# Make the script executable
-chmod +x blueclaw.py
+# Move to client folder
+cd client/
 
-# Move it to a directory that's already on your PATH
-mv blueclaw.py /usr/local/bin/blueclaw
+# Copy the blueclaw.py to ~/bin/
+cp blueclaw ~/bin/blueclaw
 ```
 
 Now you can run it from anywhere:
