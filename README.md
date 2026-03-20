@@ -2,7 +2,7 @@
    <img src="data/logo.png" alt="Description of image" width="500" style="border-radius: 20%">
 </p>
 
-# BlueClaw
+# BlueClawAI
 
 **Local Host Artificial Intelligence** — A locally hosted AI assistant that runs entirely on your own machine, with a Python backend powered by Ollama models and a web-based client interface.
 
