@@ -102,7 +102,10 @@ nano ~/.zprofile
 # For Bash
 nano ~/.bash_profile
 ```
-
+Add this line at the bottom (Edit the path to direct to the bin folder):
+```bash
+export PATH=$PATH":$HOME/bin"
+```
 Add this line at the bottom (adjust the path to match your Python version):
 
 ```bash
