@@ -41,13 +41,13 @@ BlueClaw/
 ### Option 1: Clone with Git
 
 ```bash
-git clone https://github.com/daoduylam2008/BlueClaw.git
+git clone https://github.com/daoduylam2008/BlueClawAI.git
 cd BlueClaw
 ```
 
 ### Option 2: Download ZIP
 
-1. Go to the [repository page](https://github.com/daoduylam2008/BlueClaw).
+1. Go to the [repository page](https://github.com/daoduylam2008/BlueClawAI).
 2. Click the green **Code** button.
 3. Select **Download ZIP**.
 4. Extract the ZIP to a folder of your choice.
@@ -147,7 +147,7 @@ mkdir ~/bin
 cd client/
 
 # Copy the blueclaw.py to ~/bin/
-cp blueclaw ~/bin/blueclaw
+cp blueclawai ~/bin/blueclawai
 ```
 
 Now you can run it from anywhere:

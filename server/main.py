@@ -9,6 +9,8 @@ import logging
 
 
 models = {}
+setting = {}
+
 logger = logging.getLogger('uvicorn.error')
 
 @asynccontextmanager
