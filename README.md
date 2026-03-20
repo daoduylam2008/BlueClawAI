@@ -1,5 +1,6 @@
-<img src="data/logo.png" alt="Description of image" width="500" style="border-radius: 20%">
-
+<p align="center">
+   <img src="data/logo.png" alt="Description of image" width="500" style="border-radius: 20%">
+</p>
 
 # BlueClaw
 
