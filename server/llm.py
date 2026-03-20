@@ -10,5 +10,14 @@ class LLM:
         self.agent = create_agent(self.__llm, tools=utils.load_tools())
     def invoke(self, messages):
         return self.agent.invoke(messages)
+    
+    def request(self, query):
+        messages = {"messages": [
+            {
+                "role": "user",
+                "content": query
+            }
+        ]}
+        return self.invoke(messages=messages)
 
     

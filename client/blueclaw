@@ -1,0 +1,65 @@
+#!/usr/local/bin/python3 blueclaw
+
+import argparse
+import sys
+import requests
+
+
+URL = 'http://127.0.0.1:8000'
+
+
+def request(args):
+    params = {
+        "query": args.query
+    }
+    response = requests.get(f'{URL}/request/', params=params)
+
+    if response.status_code == 200:
+        data = response.json()
+        print(data["ai_response"])
+    else:
+        print(f"Error: Received status code {response.status_code}")
+
+
+def start(args):
+    pass
+
+
+def stop(args):
+    pass
+
+
+def list_model():
+    pass
+
+
+def main():
+    parser = argparse.ArgumentParser(description="A command to run the BlueClaw locally on your terminal")
+    
+    subparsers = parser.add_subparsers(dest='command', help='Available commands')
+
+    request_parser = subparsers.add_parser('request', help='Request to run the llm model')
+    request_parser.add_argument('-q','--query', type=str, help='text or query to ask the model')
+    # request_parser.add_argument('-m', '--model', type=str, default='llm', help='Choosing the Artificial Intelligence model')
+    request_parser.add_argument('-t', '--tool', type=bool, default=False, help='Enable/Disable to allow the tool executives locally')
+    request_parser.set_defaults(func=request)
+
+    start_parser = subparsers.add_parser('start', help='Start to run the server and model locally')
+    # start_parser.add_argument('-m','--model', type=str, default='llm', help='Choosing the model to start running')
+    start_parser.set_defaults(func=start)
+
+    stop_parser = subparsers.add_parser('stop', help='stop the server and model locally')
+    # stop_parser.add_argument('-m','--model', type=str, default='llm', help='Choosing the model to stop running')
+    stop_parser.set_defaults(func=stop)
+
+    args = parser.parse_args()
+
+    if args.command:
+        args.func(args)
+    else:
+        # If no command is provided, show help
+        parser.print_help()
+
+if __name__ == "__main__":
+    main()
+

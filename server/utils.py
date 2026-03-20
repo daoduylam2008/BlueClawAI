@@ -33,3 +33,12 @@ def ai_sort(responses):
                 ai_responses.append(response)
         
     return ai_responses
+
+def human_sort(responses):
+    human_responses = []
+
+    for response in responses['messages']:
+        if type(response) == langchain_core.messages.human.HumanMessage:
+            human_responses.append(response)
+        
+    return human_responses
