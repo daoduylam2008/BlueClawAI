@@ -178,7 +178,35 @@ If pip is missing, install it with:
 ```bash
 python -m ensurepip --upgrade
 ```
-
+---
+ 
+## API Keys
+ 
+### OpenWeather API Key
+ 
+BlueClaw uses the OpenWeather API for weather-related features. You'll need a free API key to enable this.
+ 
+1. Go to [https://home.openweathermap.org/users/sign_up](https://home.openweathermap.org/users/sign_up) and create a free account.
+2. After signing in, navigate to **API Keys** at [https://home.openweathermap.org/api_keys](https://home.openweathermap.org/api_keys).
+3. Copy your default key or generate a new one.
+4. In the root of the project, create a `.env` file if it doesn't already exist:
+ 
+```bash
+touch .env
+```
+ 
+5. Open the `.env` file and add your API key:
+ 
+```env
+OPENWEATHER_API_KEY=your_api_key_here
+```
+ 
+6. Save the file. The server will automatically load it on startup.
+ 
+> **Note:** Never commit your `.env` file to version control. Make sure `.env` is listed in your `.gitignore`.
+ 
+> **Note:** Newly created API keys may take up to a few hours to activate.
+ 
 ---
 
 ## Running the App
