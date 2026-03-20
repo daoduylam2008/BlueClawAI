@@ -1,10 +1,10 @@
 # BlueClaw
 
-**Local Host Artificial Intelligence** — A locally hosted AI assistant that runs entirely on your own machine, with a Python backend powered by Hugging Face models and a web-based client interface.
+**Local Host Artificial Intelligence** — A locally hosted AI assistant that runs entirely on your own machine, with a Python backend powered by Ollama models and a web-based client interface.
 
 ## Overview
 
-BlueClaw lets you run and interact with AI language models locally, without sending data to external APIs. It uses a Python FastAPI server to handle requests and a Jinja-templated web client as the frontend.
+BlueClaw lets you run and interact with AI language models locally, without sending data to external APIs. It uses a Python FastAPI server to handle requests
 
 ## Features
 
@@ -16,7 +16,7 @@ BlueClaw lets you run and interact with AI language models locally, without send
 | Layer | Technology |
 |-------|-----------|
 | Backend / AI Server | Python, FastAPI |
-| Web Frontend | Jinja (HTML templates) |
+| Web Frontend | Running on your terminal |
 
 ## Project Structure
 
@@ -134,11 +134,14 @@ source ~/.bashrc
 Move `blueclaw.py` to a directory on your PATH and make it executable so you can run it directly from any terminal location:
 
 ```bash
-# Move it to a directory that's already on your PATH
-mv blueclaw.py /usr/local/bin/blueclaw
+# Create bn directory in the user path
+mkdir ~/bin
 
 # Make the script executable
 chmod +x blueclaw.py
+
+# Move it to a directory that's already on your PATH
+mv blueclaw.py /usr/local/bin/blueclaw
 ```
 
 Now you can run it from anywhere:
