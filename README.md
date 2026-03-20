@@ -155,6 +155,9 @@ Now you can run it from anywhere:
 
 ```bash
 blueclaw
+
+# To run with a query to server
+blueclaw request <query>
 ```
 
 > **Note:** On macOS, if `/usr/local/bin` requires elevated permissions, prefix the `mv` command with `sudo`:
