@@ -1,4 +1,4 @@
-<img src="data/logo.png" alt="Description of image" width="500" style="border-radius: 2%">
+<img src="data/logo.png" alt="Description of image" width="500" style="border-radius: 5%">
 
 
 # BlueClaw
