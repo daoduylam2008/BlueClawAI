@@ -1,3 +1,3 @@
 secret/huggingface
 
-config.json
+./config.json
