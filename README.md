@@ -39,7 +39,7 @@ ollama pull qwen2.5:3b
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/daoduylam2008/BlueClawAI.git
+git clone https://github.com/daoduylam2008/BlueClawAI-Private.git
 cd BlueClawAI
 ```
 
