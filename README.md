@@ -201,22 +201,6 @@ ollama serve
  
 ---
 
-New keys can take **up to a few hours** to become active.
-
-### 2. Add the key to your environment
-
-Create a file named **`.env`** inside the **`server`** directory (for example `~/.blueclawai/server/.env` after install, or `BlueClawAI/server/.env` in a clone). Add:
-
-```env
-OPENWEATHER_KEY_API=your_api_key_here
-```
-
-Restart **`blueclawai start_server`** after changing `.env`.
-
-**Security:** Do not commit `.env` or paste keys into public chats. Ensure `.env` is listed in `.gitignore`.
-
----
-
 ## Troubleshooting
 
 | Issue | What to check |
