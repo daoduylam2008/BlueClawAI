@@ -32,8 +32,6 @@ ollama pull llama3.1
 ollama pull qwen2.5:3b
 ```
 
-### Option 2: Download ZIP
-
 ---
 
 ## Install from GitHub (clone + bash)
@@ -117,9 +115,29 @@ blueclawai request -q "Your question here"
 
 ---
 
-## Optional: API keys
+## OpenWeather API key (weather tool)
 
-Some tools may use external APIs. If your deployment needs them, create a `.env` file (for example next to your server code) and add keys as required by your configuration. Do not commit secrets to git.
+The agent can call OpenWeatherMap when users ask about weather. That requires a free API key.
+
+### 1. Create an account and get a key
+
+1. Sign up at [OpenWeather — user registration](https://home.openweathermap.org/users/sign_up).
+2. After you sign in, open **[API keys](https://home.openweathermap.org/api_keys)**.
+3. Copy your default key or create a new one.
+
+New keys can take **up to a few hours** to become active.
+
+### 2. Add the key to your environment
+
+Create a file named **`.env`** inside the **`server`** directory (for example `~/.blueclawai/server/.env` after install, or `BlueClawAI/server/.env` in a clone). Add:
+
+```env
+OPENWEATHER_KEY_API=your_api_key_here
+```
+
+Restart **`blueclawai start_server`** after changing `.env`.
+
+**Security:** Do not commit `.env` or paste keys into public chats. Ensure `.env` is listed in `.gitignore`.
 
 ---
 
