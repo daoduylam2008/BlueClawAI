@@ -121,13 +121,6 @@ blueclaw request <query>
 ## OpenWeather API key (weather tool)
 
 The agent can call OpenWeatherMap when users ask about weather. That requires a free API key.
-
-### 1. Create an account and get a key
-
-```bash
-python -m ensurepip --upgrade
-```
----
  
 ## API Keys
  
