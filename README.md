@@ -4,154 +4,110 @@
 
 # BlueClawAI
 
-**Local Host Artificial Intelligence** — A locally hosted AI assistant that runs entirely on your own machine, with a Python backend powered by Ollama models and a web-based client interface.
+---
 
-## Overview
+## Before you begin (required)
 
-BlueClaw lets you run and interact with AI language models locally, without sending data to external APIs. It uses a Python FastAPI server to handle requests
+Install and verify these **before** you clone the project or run any install script.
 
-## Features
+### 1. Python
 
-- **100% Local** — All AI inference runs on your own hardware, keeping your data private
-- **Web Client** — Browser-based chat interface served by the local Python server
-
-## Tech Stack
-
-| Layer | Technology |
-|-------|-----------|
-| Backend / AI Server | Python, FastAPI |
-| Web Frontend | Running on your terminal |
-
-## Project Structure
-
-```
-BlueClaw/
-├── server/             # Python FastAPI backend — serves the AI model and API
-├── client/             # Web frontend — browser-based chat interface
-└── __pycache__/
-```
-
-## Prerequisites
-
-- Python 3.x
-- pip
-- A compatible GPU (recommended for faster inference) or CPU
-
-## Download & Installation
-
-### Option 1: Clone with Git
+- Install a recent **Python 3** from [python.org](https://www.python.org/downloads/) or your OS package manager.
+- Confirm it works:
 
 ```bash
-git clone https://github.com/daoduylam2008/BlueClaw.git
-cd BlueClaw
-```
-
-### Option 2: Download ZIP
-
-1. Go to the [repository page](https://github.com/daoduylam2008/BlueClaw).
-2. Click the green **Code** button.
-3. Select **Download ZIP**.
-4. Extract the ZIP to a folder of your choice.
-
-## Installation
-
-Install the required Python dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-
-## Setting Up Your PATH
-
-Before running the app, make sure Python and pip are accessible from your terminal.
-
-### Check if Python is already in your PATH
-
-```bash
-python --version
-# or
 python3 --version
 ```
 
-If you see a version number, you're good to go. If you get a "command not found" error, follow the steps below for your OS.
+The included macOS install scripts call **`python3.14`**. If your system uses another command (for example `python3` or `python3.12`), edit the install script and replace `python3.14` with the interpreter you use, or install Python 3.14 to match.
 
-### Windows
+### 2. Ollama
 
-1. Find your Python installation path (typically something like `C:\Users\YourName\AppData\Local\Programs\Python\Python3xx\`).
-2. Open **Start** → search for **"Environment Variables"** → click **"Edit the system environment variables"**.
-3. Under **System Variables**, select **Path** → click **Edit**.
-4. Click **New** and add both:
-   ```
-   C:\Users\YourName\AppData\Local\Programs\Python\Python3xx\
-   C:\Users\YourName\AppData\Local\Programs\Python\Python3xx\Scripts\
-   ```
-5. Click **OK** and restart your terminal.
-
-### macOS
-
-Add Python to your PATH by editing the appropriate shell config file(s). On macOS you may need to update more than one depending on your shell:
-
-| Shell | Login shell file | Interactive shell file |
-|-------|-----------------|----------------------|
-| Zsh (default on macOS Catalina+) | `~/.zprofile` | `~/.zshrc` |
-| Bash | `~/.bash_profile` | `~/.bashrc` |
-
-Edit the relevant file(s):
+- Install **Ollama** from [https://ollama.com](https://ollama.com).
+- Start the Ollama service (on macOS, the Ollama app does this; on Linux you may run `ollama serve` in a terminal).
+- Pull the models the app expects (defaults in the server use these names):
 
 ```bash
-# For Zsh
-nano ~/.zprofile
+ollama pull llama3.1
+ollama pull qwen2.5:3b
+```
 
-# For Bash
-nano ~/.bash_profile
-```
-Add this line at the bottom (Edit the path to direct to the bin folder):
-```bash
-export PATH=$PATH":$HOME/bin"
-```
-Add this line at the bottom (adjust the path to match your Python version):
+---
+
+## Install from GitHub (clone + bash)
+
+### 1. Clone the repository
 
 ```bash
-export PATH="/usr/local/bin/python3:$PATH"
+git clone https://github.com/daoduylam2008/BlueClawAI.git
+cd BlueClawAI
 ```
 
-Save and reload:
+*(If you prefer a ZIP, download it from the repository’s **Code → Download ZIP** page and extract it, then `cd` into the extracted folder.)*
+
+### 2. Run the install script (macOS)
+
+From the **root of the cloned project**, run the server install script so `blueclawai`, `app.py`, and the `server` package are copied under `~/.blueclawai` and your shell `PATH` is updated:
 
 ```bash
-source ~/.zprofile    # or source ~/.bash_profile
+bash "server_instal (mac).sh"
 ```
-
-### Linux
-
-Edit `~/.bashrc` (or `~/.zshrc` if using Zsh):
 
 ```bash
-nano ~/.bashrc
-
-# Add at the bottom:
-export PATH="/usr/local/bin/python3:$PATH"
-
-# Save and reload:
-source ~/.bashrc
+source ~/.zprofile   # zsh (default on recent macOS)
+# and/or
+source ~/.bash_profile
 ```
 
-### Make BlueClaw Runnable as a Command
+**What this does:** installs Python dependencies from `server/requirements.txt`, creates `~/.blueclawai`, copies `blueclawai`, `app.py`, and `server/` there, and appends `~/.blueclawai` to your `PATH`.
 
-Move `blueclaw.py` to a directory on your PATH and make it executable so you can run it directly from any terminal location:
+> **Note:** There is also `client_install (mac).bash`, which only copies the CLI launcher and `app.py` (no `server/` tree). Use **`server_instal (mac).sh`** if you want the full local server and the `start_server` workflow.
+
+---
+
+## Using BlueClawAI with `blueclawai`
+
+The `blueclawai` command is a small CLI. After installation, ensure **Ollama is running** and you have pulled the models (see above).
+
+### Where to run commands
+
+The server and TUI expect to find `server/` and `app.py` next to each other. After the full install, that layout lives under **`~/.blueclawai`**. Open a terminal and:
 
 ```bash
-# Create bn directory in the user path
-mkdir ~/bin
-
-# Move to client folder
-cd client/
-
-# Copy the blueclaw.py to ~/bin/
-cp blueclaw ~/bin/blueclaw
+cd ~/.blueclawai
 ```
 
-Now you can run it from anywhere:
+Use that directory whenever you run `blueclawai` in the steps below.
+
+### Show help
+
+```bash
+blueclawai --help
+```
+
+### Start the API server (port 8080)
+
+In **one** terminal (from `~/.blueclawai`):
+
+```bash
+blueclawai start_server
+```
+
+Leave this running. It serves the LLM backend used by the terminal UI and by `request`.
+
+### Open the terminal chat UI
+
+In **another** terminal (from `~/.blueclawai`):
+
+```bash
+blueclawai run
+```
+
+This launches the Textual-based interface. Type a message and submit to chat with the model (the UI talks to `http://127.0.0.1:8080`).
+
+### Send a single question from the shell
+
+With the server already running:
 
 ```bash
 blueclaw
@@ -160,20 +116,13 @@ blueclaw
 blueclaw request <query>
 ```
 
-> **Note:** On macOS, if `/usr/local/bin` requires elevated permissions, prefix the `mv` command with `sudo`:
-> ```bash
-> sudo mv blueclaw.py /usr/local/bin/blueclaw
-> ```
+---
 
-### Verify pip is also available
+## OpenWeather API key (weather tool)
 
-```bash
-pip --version
-# or
-pip3 --version
-```
+The agent can call OpenWeatherMap when users ask about weather. That requires a free API key.
 
-If pip is missing, install it with:
+### 1. Create an account and get a key
 
 ```bash
 python -m ensurepip --upgrade
@@ -259,25 +208,33 @@ ollama serve
  
 ---
 
-## Running the App
+New keys can take **up to a few hours** to become active.
 
-### Start the Server
+### 2. Add the key to your environment
 
-```bash
-cd server
-fastapi dev main.py
+Create a file named **`.env`** inside the **`server`** directory (for example `~/.blueclawai/server/.env` after install, or `BlueClawAI/server/.env` in a clone). Add:
+
+```env
+OPENWEATHER_KEY_API=your_api_key_here
 ```
 
-Then open your browser and navigate to:
+Restart **`blueclawai start_server`** after changing `.env`.
 
-```
-http://localhost:8000
-```
+**Security:** Do not commit `.env` or paste keys into public chats. Ensure `.env` is listed in `.gitignore`.
 
-## Notes
+---
 
-- For best performance, a CUDA-compatible GPU is recommended. CPU inference is supported but will be slower.
+## Troubleshooting
+
+| Issue | What to check |
+|--------|----------------|
+| `blueclawai: command not found` | Reload `~/.zprofile` / `~/.bash_profile` or open a new terminal; confirm `~/.blueclawai` is on `PATH`. |
+| Connection errors in the UI or `request` | Run `blueclawai start_server` from `~/.blueclawai` and ensure nothing else uses port **8080**. |
+| Model errors from Ollama | Ollama is running; you ran `ollama pull` for the model names in `server/llm.py`. |
+| `python3.14` not found | Install Python 3.14 or edit the install script and `parser.py` to use your `python3` command. |
+
+---
 
 ## Author
 
-- **Dao Duy Lam** — [@daoduylam2008](https://github.com/daoduylam2008)
+**Dao Duy Lam** — [@daoduylam2008](https://github.com/daoduylam2008)
