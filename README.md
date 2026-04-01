@@ -1,8 +1,8 @@
-<img src="data/logo.png" alt="Description of image" width="500" style="border-radius: 2%">
+<p align="center">
+   <img src="data/logo.png" alt="Description of image" width="500" style="border-radius: 20%">
+</p>
 
 # BlueClawAI
-
-**Local artificial intelligence** — Chat with models on your own machine via a terminal UI and a small HTTP API. The backend uses **Python** and **Ollama**; the CLI entry point is **`blueclawai`**.
 
 ---
 
@@ -110,7 +110,10 @@ This launches the Textual-based interface. Type a message and submit to chat wit
 With the server already running:
 
 ```bash
-blueclawai request -q "Your question here"
+blueclaw
+
+# To run with a query to server
+blueclaw request <query>
 ```
 
 ---
@@ -121,9 +124,89 @@ The agent can call OpenWeatherMap when users ask about weather. That requires a 
 
 ### 1. Create an account and get a key
 
-1. Sign up at [OpenWeather — user registration](https://home.openweathermap.org/users/sign_up).
-2. After you sign in, open **[API keys](https://home.openweathermap.org/api_keys)**.
-3. Copy your default key or create a new one.
+```bash
+python -m ensurepip --upgrade
+```
+---
+ 
+## API Keys
+ 
+### OpenWeather API Key
+ 
+BlueClaw uses the OpenWeather API for weather-related features. You'll need a free API key to enable this.
+ 
+1. Go to [https://home.openweathermap.org/users/sign_up](https://home.openweathermap.org/users/sign_up) and create a free account.
+2. After signing in, navigate to **API Keys** at [https://home.openweathermap.org/api_keys](https://home.openweathermap.org/api_keys).
+3. Copy your default key or generate a new one.
+4. In the root of the project, create a `.env` file if it doesn't already exist:
+ 
+```bash
+touch .env
+```
+ 
+5. Open the `.env` file and add your API key:
+ 
+```env
+OPENWEATHER_API_KEY=your_api_key_here
+```
+ 
+6. Save the file. The server will automatically load it on startup.
+ 
+> **Note:** Never commit your `.env` file to version control. Make sure `.env` is listed in your `.gitignore`.
+ 
+> **Note:** Newly created API keys may take up to a few hours to activate.
+ 
+---
+## Setting Up Ollama & Llama 3.1
+ 
+BlueClaw uses [Ollama](https://ollama.com) to run the Llama 3.1 language model locally.
+ 
+### 1. Download and Install Ollama
+ 
+Go to [https://ollama.com/download](https://ollama.com/download) and download the installer for your OS:
+ 
+| OS | Instructions |
+|----|-------------|
+| macOS | Download the `.dmg`, open it, and drag Ollama to your Applications folder |
+| Windows | Download and run the `.exe` installer |
+| Linux | Run the install script in your terminal: |
+ 
+```bash
+# Linux only
+curl -fsSL https://ollama.com/install.sh | sh
+```
+ 
+Verify the installation:
+ 
+```bash
+ollama --version
+```
+ 
+### 2. Pull the Llama 3.1 Model
+ 
+Once Ollama is installed, download the Llama 3.1 model:
+ 
+```bash
+ollama pull llama3.1
+```
+ 
+> This will download several gigabytes of model weights. Make sure you have a stable internet connection and enough disk space (~5 GB).
+ 
+### 3. Verify the Model is Available
+ 
+```bash
+ollama list
+```
+ 
+You should see `llama3.1` listed. Ollama must be running in the background before you start the BlueClaw server.
+ 
+### 4. Start Ollama (if not already running)
+ 
+```bash
+ollama serve
+```
+ 
+---
 
 New keys can take **up to a few hours** to become active.
 
