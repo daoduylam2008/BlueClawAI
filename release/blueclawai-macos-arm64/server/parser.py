@@ -50,7 +50,7 @@ def run(args):
     """
     Run the model.
     """
-    subprocess.run("./~/.blueclawai/bin/app", shell=True)
+    subprocess.run("cd ~/.blueclawai/bin; ./app", shell=True)
 
 
 
