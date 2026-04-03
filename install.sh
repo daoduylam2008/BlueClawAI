@@ -8,7 +8,7 @@ set -e  # Exit immediately if any command fails
 
 # ─── Config ──────────────────────────────────────────────────────────────────
 REPO="daoduylam2008/BlueClawAI"
-VERSION="v1.2.1-beta"
+VERSION="v1.2.0"
 INSTALL_DIR="$HOME/.blueclawai"
 BIN_DIR="$INSTALL_DIR/bin"
 TMP_DIR=$(mktemp -d)
