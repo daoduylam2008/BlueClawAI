@@ -42,14 +42,14 @@ def start(args):
     """
     Start the server and model locally.
     """
-    subprocess.run("cd server\nuvicorn llm_server:app --port=8080", shell=True)
-    # subprocess.run("cd server\nuvicorn llm_server:app --host=0.0.0.0 --port=8080", shell=True)
+    # subprocess.run("cd server\nuvicorn llm_server:app --port=8080", shell=True)
+    subprocess.run("cd server\nuvicorn llm_server:app --host=0.0.0.0 --port=8080", shell=True)
 
 def run(args):
     """
     Run the model.
     """
-    subprocess.run("python3.14 app.py")
+    subprocess.run("./app")
 
 
 class ArgumentParser(argparse.ArgumentParser):

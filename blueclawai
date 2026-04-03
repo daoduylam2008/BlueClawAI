@@ -1,7 +1,7 @@
 #!/usr/local/bin/python3 .blueclawai/blueclawai 
 from server.parser import ArgumentParser, parser_init
 
-__VERSION__ = "1.1.0"
+__VERSION__ = "1.2.0"
 
 
 if __name__ == "__main__":
