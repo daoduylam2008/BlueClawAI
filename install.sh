@@ -169,10 +169,10 @@ install_files() {
     error "blueclawai binary not found in release package"
   fi
 
-  if [ -f "$EXTRACTED_DIR/app" ]; then
-    cp "$EXTRACTED_DIR/app" "$BIN_DIR/app"
-    chmod +x "$BIN_DIR/app"
-    success "Installed: app"
+  if [ -f "$EXTRACTED_DIR/app.py" ]; then
+    cp "$EXTRACTED_DIR/app.py" "$BIN_DIR/app.py"
+    chmod +x "$BIN_DIR/app.py"
+    success "Installed: app.py"
   else
     warn "app binary not found — 'app' command may not work"
   fi

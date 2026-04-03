@@ -43,14 +43,16 @@ def start(args):
     """
     Start the server and model locally.
     """
-    subprocess.run("cd ~/.blueclawai/bin; uvicorn llm_server:app --port=8080", shell=True)
+    subprocess.run("cd ~/.blueclawai/bin/server; uvicorn llm_server:app --port=8080", shell=True)
 
 
 def run(args):
     """
     Run the model.
     """
-    subprocess.run("cd ~/.blueclawai/bin; ./app")
+    from app import app
+
+    app.run()
 
 
 class ArgumentParser(argparse.ArgumentParser):
