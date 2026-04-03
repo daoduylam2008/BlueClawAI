@@ -50,9 +50,8 @@ def run(args):
     """
     Run the model.
     """
-    from app import app
+    subprocess.run("./~/.blueclawai/bin/app", shell=True)
 
-    app.run()
 
 
 class ArgumentParser(argparse.ArgumentParser):
