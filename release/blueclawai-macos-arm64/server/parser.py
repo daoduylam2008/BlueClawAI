@@ -44,17 +44,19 @@ def start(args):
     Start the server and model locally.
     """
     try:
-        # subprocess.run("cd server\nuvicorn llm_server:app --port=8080", shell=True)
-        subprocess.run("uvicorn llm_server:app --host=0.0.0.0 --port=8080", shell=True)
-    except Exception as e:
-        logging.info("System quit completed.")
+        subprocess.run("cd server\nnuvicorn llm_server:app --port=8080", shell=True) 
+    except:
+        subprocess.run("cd ~/.blueclawai/bin\nuvicorn llm_server:app --port=8080", shell=True)
 
 
 def run(args):
     """
     Run the model.
     """
-    subprocess.run("./app")
+    try:
+        subprocess.run("cd ./app")
+    except:
+        subprocess.run("cd ~/.blueclawai/bin\n./app")
 
 
 class ArgumentParser(argparse.ArgumentParser):

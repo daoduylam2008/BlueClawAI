@@ -1,5 +1,5 @@
 #!/usr/local/bin/python3 .blueclawai/blueclawai 
-from server.parser import ArgumentParser, parser_init
+from server.parser import parser_init
 
 __VERSION__ = "1.2.0"
 

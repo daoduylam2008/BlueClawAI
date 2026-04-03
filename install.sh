@@ -179,21 +179,8 @@ install_files() {
 
   # Copy data folder if it exists in the package
   if [ -d "$EXTRACTED_DIR/server" ]; then
-    cp -r "$EXTRACTED_DIR/server/." "$INSTALL_DIR/server/"
+    cp -r "$EXTRACTED_DIR/server/." "$BIN_DIR/server/"
     success "Installed: server files"
-  fi
-
-  # Create empty .env file if it doesn't exist (for API keys)
-  if [ ! -f "$INSTALL_DIR/.env" ]; then
-    cat > "$INSTALL_DIR/.env" << 'EOF'
-# BlueClawAI Environment Variables
-# Add your API keys here
-
-# OpenWeatherMap API key (optional — for weather features)
-# Get a free key at: https://home.openweathermap.org/api_keys
-OPENWEATHER_API_KEY=
-EOF
-    success "Created: $INSTALL_DIR/.env (edit to add API keys)"
   fi
 }
 
