@@ -104,7 +104,6 @@ Keep this running. It powers the AI backend on port **8080**. This can run on on
 ### Terminal 2 — Open the chat UI
 
 ```bash
-cd ~/.blueclawai
 blueclawai run
 ```
 
